@@ -1,0 +1,6 @@
+{
+  "name": "Yuan",
+  "description": "Restaurante de Culinária Imperial Chinesa - Telas de Acesso, Cadastro e Recuperação de Senha.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,384 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Lato", sans-serif;
+}
+
+/* ============================================================
+   YUAN — Login Page Styles (React Integration)
+   ============================================================ */
+
+:root {
+  /* Palette */
+  --color-bg:          #F0EDE6;
+  --color-card-bg:     #F5F2EC;
+  --color-surface:     #FDFAF5;
+  --color-border:      #E4DFCF;
+  --color-shadow:      rgba(100, 85, 60, 0.08);
+
+  --color-logo-green:  #7A9E82;
+  --color-gold:        #C8A84B;
+  --color-text:        #4A4438;
+  --color-muted:       #9A9180;
+  --color-forgot:      #7A9E82;
+  --color-register:    #7A9E82;
+
+  --color-btn-bg:      #7B2D3A;
+  --color-btn-hover:   #6A2533;
+  --color-btn-text:    #FFFFFF;
+
+  --color-error:       #B94040;
+  --color-focus-ring:  rgba(122, 158, 130, 0.35);
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Lato', sans-serif;
+
+  /* Spacing */
+  --radius-input: 14px;
+  --radius-btn:   14px;
+}
+
+/* Base custom definitions */
+body {
+  background-color: var(--color-bg);
+  font-family: var(--font-body);
+  color: var(--color-text);
+}
+
+/* ---------- Background Decorative Elements ---------- */
+.bg-decor {
+  position: fixed;
+  bottom: 0;
+  width: 180px;
+  height: 420px;
+  pointer-events: none;
+  opacity: 0.18;
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 0;
+}
+
+.bg-decor--left {
+  left: 10vw;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 420'%3E%3Cg stroke='%23888060' stroke-width='1.5' fill='none'%3E%3C!-- Main stem --%3E%3Cpath d='M80 420 Q78 350 82 280 Q76 200 84 120 Q80 60 82 20' stroke-width='2'/%3E%3C!-- Branches left --%3E%3Cpath d='M80 380 Q50 360 20 370'/%3E%3Cpath d='M80 300 Q45 275 15 290'/%3E%3Cpath d='M82 220 Q52 195 22 208'/%3E%3Cpath d='M83 150 Q55 128 30 140'/%3E%3C!-- Branches right --%3E%3Cpath d='M80 350 Q110 330 140 342'/%3E%3Cpath d='M81 270 Q112 248 140 260'/%3E%3Cpath d='M82 190 Q115 168 142 180'/%3E%3C!-- Leaves left --%3E%3Cellipse cx='16' cy='370' rx='14' ry='6' transform='rotate(-15 16 370)'/%3E%3Cellipse cx='14' cy='292' rx='14' ry='6' transform='rotate(-20 12 292)'/%3E%3Cellipse cx='18' cy='210' rx='14' ry='6' transform='rotate(-18 18 210)'/%3E%3Cellipse cx='26' cy='142' rx='13' ry='5' transform='rotate(-22 26 142)'/%3E%3C!-- Leaves right --%3E%3Cellipse cx='144' cy='343' rx='14' ry='6' transform='rotate(15 144 343)'/%3E%3Cellipse cx='144' cy='261' rx='14' ry='6' transform='rotate(18 144 261)'/%3E%3Cellipse cx='146' cy='181' rx='14' ry='6' transform='rotate(20 146 181)'/%3E%3C!-- Ground base --%3E%3Crect x='60' y='415' width='40' height='5' rx='3'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.bg-decor--right {
+  right: 10vw;
+  transform: scaleX(-1);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 420'%3E%3Cg stroke='%23888060' stroke-width='1.5' fill='none'%3E%3Cpath d='M80 420 Q78 350 82 280 Q76 200 84 120 Q80 60 82 20' stroke-width='2'/%3E%3Cpath d='M80 380 Q50 360 20 370'/%3E%3Cpath d='M80 300 Q45 275 15 290'/%3E%3Cpath d='M82 220 Q52 195 22 208'/%3E%3Cpath d='M83 150 Q55 128 30 140'/%3E%3Cpath d='M80 350 Q110 330 140 342'/%3E%3Cpath d='M81 270 Q112 248 140 260'/%3E%3Cpath d='M82 190 Q115 168 142 180'/%3E%3Cellipse cx='16' cy='370' rx='14' ry='6' transform='rotate(-15 16 370)'/%3E%3Cellipse cx='14' cy='292' rx='14' ry='6' transform='rotate(-20 12 292)'/%3E%3Cellipse cx='18' cy='210' rx='14' ry='6' transform='rotate(-18 18 210)'/%3E%3Cellipse cx='26' cy='142' rx='13' ry='5' transform='rotate(-22 26 142)'/%3E%3Cellipse cx='144' cy='343' rx='14' ry='6' transform='rotate(15 144 343)'/%3E%3Cellipse cx='144' cy='261' rx='14' ry='6' transform='rotate(18 144 261)'/%3E%3Cellipse cx='146' cy='181' rx='14' ry='6' transform='rotate(20 146 181)'/%3E%3Crect x='60' y='415' width='40' height='5' rx='3'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ---------- Page / Card ---------- */
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 24px;
+  z-index: 1;
+}
+
+.card {
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ---------- Logo ---------- */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.logo__part {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--color-logo-green);
+  line-height: 1;
+}
+
+.logo__part--large {
+  font-size: 4rem;
+}
+
+.logo__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo__line {
+  width: 100%;
+  max-width: 380px;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent 0%, var(--color-gold) 30%, var(--color-gold) 70%, transparent 100%);
+  margin-bottom: 14px;
+}
+
+/* ---------- Subtitle ---------- */
+.subtitle {
+  font-family: var(--font-body);
+  font-size: 0.995rem;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+  color: var(--color-muted);
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+/* ---------- Form ---------- */
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ---------- Fields ---------- */
+.field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.field__input {
+  width: 100%;
+  padding: 18px 22px;
+  position: relative;
+  display: flex;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-input);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--color-text);
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s, background 0.2s;
+  /* subtle grid texture */
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      rgba(180,165,130,0.07) 0px,
+      rgba(180,165,130,0.07) 1px,
+      transparent 1px,
+      transparent 28px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(180,165,130,0.07) 0px,
+      rgba(180,165,130,0.07) 1px,
+      transparent 1px,
+      transparent 28px
+    );
+}
+
+.field__input::placeholder {
+  color: var(--color-muted);
+  font-weight: 300;
+}
+
+.field__input:focus {
+  border-color: var(--color-logo-green);
+  box-shadow: 0 0 0 3px var(--color-focus-ring);
+  background-image: none;
+  background-color: #FFFEF9;
+}
+
+.field--error .field__input {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 3px rgba(185, 64, 64, 0.15);
+}
+
+/* Password toggle button */
+.field__toggle {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 6px;
+  transition: color 0.15s, background 0.15s;
+  line-height: 0;
+  z-index: 10;
+}
+
+.field__toggle:hover {
+  color: var(--color-text);
+  background: rgba(0,0,0,0.05);
+}
+
+/* When toggle is present, add right padding to avoid overlap */
+.field--password-wrapper .field__input {
+  padding-right: 52px;
+}
+
+/* Error message */
+.field__error {
+  font-size: 0.75rem;
+  color: var(--color-error);
+  margin-top: 5px;
+  padding-left: 4px;
+  min-height: 16px;
+  display: block;
+}
+
+/* ---------- Forgot link ---------- */
+.forgot-link {
+  align-self: flex-start;
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--color-forgot);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  margin-top: -2px;
+  position: relative;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+
+.forgot-link::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-forgot);
+  transition: width 0.25s ease;
+}
+
+.forgot-link:hover::after { width: 100%; }
+
+/* ---------- Submit button ---------- */
+.btn-entrar {
+  width: 100%;
+  padding: 18px;
+  background: var(--color-btn-bg);
+  color: var(--color-btn-text);
+  border: none;
+  border-radius: var(--radius-btn);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.25s, transform 0.15s, box-shadow 0.25s;
+  box-shadow: 0 4px 18px rgba(123, 45, 58, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-entrar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.btn-entrar:hover {
+  background: var(--color-btn-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(123, 45, 58, 0.35);
+}
+
+.btn-entrar:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 10px rgba(123, 45, 58, 0.2);
+}
+
+/* Loading spinner */
+.btn-entrar__loader {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+.btn-entrar:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- Register line ---------- */
+.register-line {
+  margin-top: 26px;
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--color-muted);
+}
+
+.register-link {
+  color: var(--color-register);
+  text-decoration: none;
+  font-weight: 400;
+  position: relative;
+  transition: color 0.15s;
+  cursor: pointer;
+}
+
+.register-link::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-register);
+  transition: width 0.25s ease;
+}
+
+.register-link:hover::after { width: 100%; }
+
+/* Edge and Internet Explorer password reveal reset */
+input[type="password"]::-ms-reveal {
+    display: none !important;
+}
+
+/* Custom background pattern for restaurant views */
+.restaurant-bg-grid {
+  background-image: 
+    radial-gradient(var(--color-border) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 480px) {
+  .logo__part { font-size: 2rem; }
+  .logo__part--large { font-size: 3rem; }
+  .logo__icon svg { width: 26px; height: 26px; }
+  .field__input { padding: 15px 18px; }
+  .btn-entrar { padding: 16px; }
+}
